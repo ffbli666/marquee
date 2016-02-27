@@ -1,0 +1,156 @@
+/*
+ this css from : http://www.hongkiat.com/blog/css3-animation-advanced-marquee/
+ */
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "segoe ui", Helvetica, Arial, "WenQuanYi Zen Hei", "Apple LiGothic Medium", "Microsoft JhengHei", sans-serif;
+    height: 100%;
+    font-size: 16px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.marquee {
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #000;
+    background-color: #fff;
+}
+
+.marquee li {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+}
+.marquee li:nth-child(1) {
+    -webkit-animation: left-one 5s ease infinite;
+       -moz-animation: left-one 5s ease infinite;
+            animation: left-one 5s ease infinite;
+}
+.marquee li:nth-child(2) {
+    -webkit-animation: left-two 5s ease infinite;
+       -moz-animation: left-two 5s ease infinite;
+            animation: left-two 5s ease infinite;
+}
+
+/*================================
+    Move the Marquee to the Left
+==================================*/
+
+/** Mozilla Firefox Keyframes **/
+@-moz-keyframes left-one {
+    0%  {
+        -moz-transform:translateX(100%);
+    }
+    10% {
+        -moz-transform:translateX(0);
+    }
+    40% {
+        -moz-transform:translateX(0);
+    }
+    50% {
+        -moz-transform:translateX(-100%);
+    }
+    100%{
+        -moz-transform:translateX(-100%);
+    }
+}
+@-moz-keyframes left-two {
+    0% {
+        -moz-transform:translateX(100%);
+    }
+    50% {
+        -moz-transform:translateX(100%);
+    }
+    60% {
+        -moz-transform:translateX(0);
+    }
+    90% {
+        -moz-transform:translateX(0);
+    }
+    100%{
+        -moz-transform:translateX(-100%);
+    }
+}
+/** Webkit Keyframes **/
+@-webkit-keyframes left-one {
+    0% {
+        -webkit-transform:translateX(100%);
+    }
+    10% {
+        -webkit-transform:translateX(0);
+    }
+    40% {
+        -webkit-transform:translateX(0);
+    }
+    50% {
+        -webkit-transform:translateX(-100%);
+    }
+    100%{
+        -webkit-transform:translateX(-100%);
+    }
+}
+@-webkit-keyframes left-two {
+    0% {
+        -webkit-transform:translateX(100%);
+    }
+    50% {
+        -webkit-transform:translateX(100%);
+    }
+    60% {
+        -webkit-transform:translateX(0);
+    }
+    90% {
+        -webkit-transform:translateX(0);
+    }
+    100%{
+        -webkit-transform:translateX(-100%);
+    }
+}
+
+/** Webkit Keyframes **/
+@keyframes left-one {
+    0% {
+        transform:translateX(100%);
+    }
+    10% {
+        transform:translateX(0);
+    }
+    40% {
+        transform:translateX(0);
+    }
+    50% {
+        transform:translateX(-100%);
+    }
+    100%{
+        transform:translateX(-100%);
+    }
+}
+@-webkit-keyframes left-two {
+    0% {
+        transform:translateX(100%);
+    }
+    50% {
+        transform:translateX(100%);
+    }
+    60% {
+        transform:translateX(0);
+    }
+    90% {
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-100%);
+    }
+}
