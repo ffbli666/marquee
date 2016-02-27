@@ -137,7 +137,7 @@ ul {
         transform:translateX(-100%);
     }
 }
-@-webkit-keyframes left-two {
+@keyframes left-two {
     0% {
         transform:translateX(100%);
     }
