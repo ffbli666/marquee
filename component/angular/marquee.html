@@ -1,15 +1,15 @@
-<ul class="marquee">
+<ul class="marquee" ng-class="vm.mode">
     <li class="marquee-item">
         <a ng-href="{{vm.title[0].link}}">
             <div class="title">
-                1.{{vm.title[0].title}}
+                {{vm.title[0].title}}
             </div>
         </a>
      </li>
      <li class="marquee-item">
         <a ng-href="{{vm.title[1].link}}">
             <div class="title">
-                2.{{vm.title[1].title}}
+                {{vm.title[1].title}}
             </div>
         </a>
     </li>

@@ -13,7 +13,8 @@
             restrict: "E",
             templateUrl: "../component/angular/marquee.html",
             scope: {
-                messages: "="
+                messages: "=",
+                mode: "="
             },
             link: link,
             controller: myMarqueeCtrl,
