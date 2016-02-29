@@ -400,7 +400,7 @@ ul {
         transform:translateY(-100%);
     }
 }
-@-webkit-keyframes up-two {
+@keyframes up-two {
     0% {
         transform:translateY(100%);
     }
