@@ -37,6 +37,11 @@ ul {
 /*
     left
  */
+.marquee.left li {
+    -webkit-transform:translateX(100%);
+       -moz-transform:translateX(100%);
+            transform:translateX(100%);
+}
 .marquee.left li:nth-child(1) {
     -webkit-animation: left-one 10s ease infinite;
        -moz-animation: left-one 10s ease infinite;
@@ -162,6 +167,12 @@ ul {
 /*
     down
  */
+.marquee.down li {
+    -webkit-transform:translateY(-100%);
+       -moz-transform:translateY(-100%);
+            transform:translateY(-100%);
+}
+
 .marquee.down li:nth-child(1) {
     -webkit-animation: down-one 10s ease infinite;
        -moz-animation: down-one 10s ease infinite;
@@ -283,6 +294,12 @@ ul {
 /*
     up
  */
+.marquee.up li {
+    -webkit-transform:translateY(100%);
+       -moz-transform:translateY(100%);
+            transform:translateY(100%);
+}
+
 .marquee.up li:nth-child(1) {
     -webkit-animation: up-one 10s ease infinite;
        -moz-animation: up-one 10s ease infinite;
