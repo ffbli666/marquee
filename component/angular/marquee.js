@@ -56,7 +56,8 @@
         //use timeout to get rendered DOM
         $timeout(function() {
             var item = document.querySelector(".marquee-item");
-            item.addEventListener("animationiteration", function(){
+            var animationEvent = Modernizr.prefixed('animation') + 'iteration';
+            item.addEventListener(animationEvent, function(){
                 marquee.next();
                 //use $scope.$apply call angular update, because addEventListener not in angular watch list
                 $scope.$apply();
