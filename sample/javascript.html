@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <title>Use Javascript Implement Marquee</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link href="../component/marquee.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Demo</h1>
+                    <ul class="marquee">
+                        <li class="marquee-item">
+                            <a class="marquee-link" target="_blank">
+                                <div class="marquee-title">
+                                </div>
+                            </a>
+                         </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+        "use strict";
+        var data = [
+            { title:"google", link:"http://www.google.com" },
+            { title:"yahoo", link:"http://tw.yahoo.com" },
+            { title:"facebook", link:"http://www.facebook.com" },
+            { title:"pchome", link:"http://www.pchome.com.tw" },
+            { title:"巴哈姆特", link:"http://www.gamer.com.tw" }
+        ];
+
+        var Animation = function (frameSize) {
+            var frameSize = frameSize || 30;
+            var frameTime = 1000/frameSize;
+            var frames = [];
+
+            var addFrames = function(frame) {
+                frames.push(frame);
+            };
+
+            var run = function(callback) {
+                if (frames.length == 0 && callback && typeof callback === "function") {
+                    callback();
+                }
+
+                var frame = frames.shift();
+                if (!frame || (typeof frame !== "function")) {
+                    return;
+                }
+                setTimeout(function(){
+                    frame();
+                    run(callback);
+                }, frameTime);
+            };
+
+            return {
+                addFrames: addFrames,
+                run: run
+            };
+        }
+
+        var Marquee = function(messages, wait) {
+            var wait = wait || 3000;
+            var data = messages || [];
+
+            var frameSize = 60;
+            var animation = new Animation(frameSize);
+
+            var index = 0;
+            var marquee = document.querySelector('.marquee');
+            var item = marquee.querySelector('.marquee-item');
+            var link = marquee.querySelector('.marquee-link');
+            var title = marquee.querySelector('.marquee-title');
+
+            var next = function() {
+                changeData();
+                left(100, 0);
+                animation.run(function() {
+                    setTimeout(function() {
+                        left(0, -100);
+                        animation.run(function(){
+                            setTimeout(function(){
+                               next()
+                            }, 1000)
+                        });
+                    }, wait);
+                });
+            };
+
+            var changeData = function() {
+                var msg = data[getIndex()];
+                link.href = msg.link;
+                title.innerHTML = msg.title
+            };
+
+            var getIndex = function() {
+                if (++index >= data.length) index = 0;
+                return index;
+            };
+
+            var left = function(start, end) {
+                var left = start;
+                var time = 1000; //1 second
+                var frames = Math.ceil(time/frameSize);
+                var shift = (start-end)/frames;
+                for(var i=1; i<=frames; i++) {
+                    animation.addFrames((function(i){
+                        left -= shift;
+                        if (i >= frames) left = end;
+                        item.style.left = left + "%";
+                    }).bind(this, i));
+                }
+            };
+
+            next();
+        };
+
+        var marquee = new Marquee(data, 3000);
+        </script>
+    </body>
+</html>
