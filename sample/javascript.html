@@ -45,8 +45,11 @@
             };
 
             var run = function(callback) {
-                if (frames.length == 0 && callback && typeof callback === "function") {
-                    callback();
+                if (frames.length <= 0) {
+                    if(callback && typeof callback === "function") {
+                        callback();
+                    }
+                    return ;
                 }
 
                 var frame = frames.shift();
@@ -105,16 +108,14 @@
             };
 
             var left = function(start, end) {
-                var left = start;
-                var time = 1000; //1 second
-                var frames = Math.ceil(time/frameSize);
+                var frames = frameSize;
                 var shift = (start-end)/frames;
                 for(var i=1; i<=frames; i++) {
-                    animation.addFrames((function(i){
-                        left -= shift;
-                        if (i >= frames) left = end;
-                        item.style.left = left + "%";
-                    }).bind(this, i));
+                    start -= shift;
+                    if (i >= frames) start = end;
+                    animation.addFrames((function(start){
+                        item.style.left = start + "%";
+                    }).bind(this, start));
                 }
             };
 
